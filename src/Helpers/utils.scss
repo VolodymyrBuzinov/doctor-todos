@@ -1,0 +1,33 @@
+
+// colors 
+
+$bg-color: #424a5d;
+$text-color: #333333;
+$white-color: #ffffff;
+$hover-color: #68dff0;
+//status colors
+
+$green-status: #a9d86e;
+$yellow-status: #FCB322;
+$red-status: #ff6c60;
+
+//animation 
+$animation-timing: 0.4s ease-in-out;
+
+// fonts
+$roboto: 'Roboto', sans-serif;
+$sans: 'Noto Sans JP', sans-serif;
+
+//throws
+%text-throw {
+    margin: 0;
+}
+%list-throw {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+%link-throw {
+    display: block;
+    text-decoration: none;    
+}
