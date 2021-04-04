@@ -48,6 +48,10 @@ body {
     padding: 10px 25px;
     border-radius: 10px;    
     color: $white-color;
+    transition: transform $animation-timing;
+    &:hover, &:focus {
+     transform: scale(1.07);
+    }
 }
 
 %controllers-style {
@@ -57,10 +61,14 @@ body {
     padding: 10px;
     border-radius: 10px;    
     fill: $white-color;
+    transition: transform $animation-timing;
+    &:hover, &:focus {
+        transform: scale(1.07);
+       }
     & svg {
         width: 20px;
         height: 20px;
-    }
+    }    
 }
 %status-style {
     display: inline-block;
@@ -69,5 +77,5 @@ body {
     outline: none;
     padding: 5px;
     border-radius: 10px;    
-    color: $white-color;    
+    color: $white-color;        
 }
