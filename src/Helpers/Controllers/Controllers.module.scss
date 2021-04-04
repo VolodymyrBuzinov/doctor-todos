@@ -1,0 +1,13 @@
+@import '../utils.scss';
+.green {
+    @extend %controllers-style;
+    background-color: $sumbit-controller;
+}
+.blue {
+    @extend %controllers-style;
+    background-color: $edit-controller;    
+}
+.red {
+    @extend %controllers-style;
+    background-color: $delete-controller;    
+}

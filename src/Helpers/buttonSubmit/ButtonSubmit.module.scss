@@ -1,0 +1,13 @@
+@import '../utils.scss';
+
+
+.green {
+    @extend %button-style;
+    background-color: $button-color;
+}
+.white {
+    @extend %button-style;
+    background-color: $white-color;
+    color: $text-color;
+    border: 1px solid $sidebar-text;
+}

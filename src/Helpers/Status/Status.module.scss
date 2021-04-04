@@ -1,0 +1,15 @@
+@import '../utils.scss';
+
+
+.green {
+    @extend %status-style;
+    background-color: $green-status;
+}
+.yellow {
+    @extend %status-style;
+    background-color: $yellow-status;    
+}
+.red {
+    @extend %status-style;
+    background-color: $red-status;    
+}
