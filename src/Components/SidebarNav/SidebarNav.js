@@ -6,8 +6,7 @@ import sprite from '../../Sprite/symbol-defs.svg';
 
 export default function SidebarNav() {
   return (
-    <aside className={style.sidebar}>
-      {/* <nav> */}
+    <aside className={style.sidebar}>      
       <div className={style.user}>
         <div className={style.userPhoto}>
           <img
@@ -28,7 +27,7 @@ export default function SidebarNav() {
             <svg className={style.svg}>
               <use href={`${sprite}#icon-home`}></use>
             </svg>
-            Пациенты
+            Пацієнти
           </NavLink>
         </li>
         <li className={style.navListItem}>
@@ -52,11 +51,10 @@ export default function SidebarNav() {
             <svg className={style.svg}>
               <use href={`${sprite}#icon-add`}></use>
             </svg>
-            Добавить пациента
+            Додати пацієнта
           </NavLink>
         </li>
-      </ul>
-      {/* </nav> */}
+      </ul>      
     </aside>
   );
 }
