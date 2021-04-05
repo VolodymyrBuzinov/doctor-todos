@@ -1,0 +1,10 @@
+@import '../utils.scss';
+
+.header {
+  height: 40px;
+  background-color: $header-bg;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

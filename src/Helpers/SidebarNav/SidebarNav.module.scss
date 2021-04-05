@@ -1,0 +1,88 @@
+@import '../utils.scss';
+
+.sidebar {
+  min-width: 18%;
+  padding: 10px;
+  background-color: $bg-color;
+  height: 100vh;
+  padding-top: 30px;
+  position: sticky;
+  top: 40px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.userPhoto {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.userName {
+  color: $white-color;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.navList {
+  @extend %list-throw;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+}
+
+.navListItem {
+  width: 100%;
+}
+
+.navLink {
+  @extend %link-throw;
+  padding: 15px 0 15px 10px;
+  color: $sidebar-text;
+  transition: all $animation-timing;
+  font-size: 14px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  &:hover,
+  &:focus {
+    color: $white-color;
+    background-color: $hover-color;
+    .svg {
+      fill: $white-color;
+    }
+  }
+}
+
+.navLinkActive {
+  color: $white-color;
+  background-color: $hover-color;
+  .svg {
+    fill: $white-color;
+  }
+}
+
+.svg {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  fill: $sidebar-text;
+  transition: all $animation-timing;
+}
