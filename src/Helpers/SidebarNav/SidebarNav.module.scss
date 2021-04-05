@@ -1,11 +1,13 @@
 @import '../utils.scss';
 
 .sidebar {
-  width: 15%;
+  min-width: 18%;
   padding: 10px;
   background-color: $bg-color;
   height: 100vh;
   padding-top: 30px;
+  position: sticky;
+  top: 40px;
 }
 
 .user {
@@ -69,6 +71,9 @@
 .navLinkActive {
   color: $white-color;
   background-color: $hover-color;
+  .svg {
+    fill: $white-color;
+  }
 }
 
 .svg {
