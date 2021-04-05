@@ -1,5 +1,4 @@
-
-// colors 
+// colors
 
 $bg-color: #424a5d;
 $sidebar-text: #aeb2b7;
@@ -10,72 +9,74 @@ $button-color: #5cb85c;
 //status colors
 
 $green-status: #a9d86e;
-$yellow-status: #FCB322;
+$yellow-status: #fcb322;
 $red-status: #ff6c60;
 //controllers
 $sumbit-controller: #5cb85c;
 $edit-controller: #428bca;
 $delete-controller: #d9534f;
-//animation 
+//animation
 $animation-timing: 0.4s ease-in-out;
 
 // fonts
 $roboto: 'Roboto', sans-serif;
 $sans: 'Noto Sans JP', sans-serif;
 body {
-    font-family: $roboto;
+  font-family: $roboto;
 }
 //throws
 %text-throw {
-    margin: 0;
+  margin: 0;
 }
 %list-throw {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 %link-throw {
-    display: block;
-    text-decoration: none;    
+  display: block;
+  text-decoration: none;
 }
 
 // styles
 
 %button-style {
-    background-color: $button-color;
-    border: none;
-    outline: none;
-    padding: 10px 25px;
-    border-radius: 10px;    
-    color: $white-color;
-    transition: transform $animation-timing;
-    &:hover, &:focus {
-     transform: scale(1.07);
-    }
+  background-color: $button-color;
+  border: none;
+  outline: none;
+  padding: 10px 25px;
+  border-radius: 10px;
+  color: $white-color;
+  transition: transform $animation-timing;
+  &:hover,
+  &:focus {
+    transform: scale(1.07);
+  }
 }
 
 %controllers-style {
-    background-color: $sumbit-controller;
-    border: none;
-    outline: none;
-    padding: 10px;
-    border-radius: 10px;    
-    fill: $white-color;
-    transition: transform $animation-timing;
-    &:hover, &:focus {
-        transform: scale(1.07);
-       }
-    & svg {
-        width: 20px;
-        height: 20px;
-    }    
+  background-color: $sumbit-controller;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  fill: $white-color;
+  transition: transform $animation-timing;
+  &:hover,
+  &:focus {
+    transform: scale(1.07);
+  }
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 %status-style {
-    display: inline-block;
-    background-color: $sumbit-controller;
-    border: none;
-    outline: none;
-    padding: 5px;
-    border-radius: 10px;    
-    color: $white-color;        
+  display: inline-block;
+  background-color: $sumbit-controller;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 10px;
+  color: $white-color;
 }
