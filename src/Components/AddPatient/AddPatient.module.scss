@@ -1,0 +1,116 @@
+@import '../../Helpers/utils.scss';
+
+.addPatient {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    text-align: center;     
+    background-color: $section-color;  
+    height: 100%;
+    &Form {        
+           width: 50%;
+    }
+    &Title {
+        @extend %text-throw;
+        margin-bottom: 25px;
+        color: $text-color;
+        font-size: 20px;
+        font-family: $sans;
+    }
+    &Label {
+        display: flex;        
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        width: 75%;
+        margin-bottom: 25px;
+        & span {
+        color: $text-color;
+        font-size: 15px;
+        }
+    }
+    &Input {        
+        width: 200px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border: 2px solid $bg-color;
+        outline: none;
+        transition: border $animation-timing;
+        color: $text-color;
+        font-size: 15px;
+        border-radius: 10px;
+        &:focus {
+            border: 2px solid $hover-color;
+        }
+    }
+    &Button {
+        @extend %button-style;       
+    }
+}
+
+.dateInput {
+    width: 200px;
+    padding-left: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: 2px solid $bg-color;
+    outline: none;
+    transition: border $animation-timing;
+    color: $text-color;
+    font-size: 15px;
+    border-radius: 10px;
+    &:focus {
+        border: 2px solid $hover-color;
+    }
+}
+.formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.inventoryForm {
+    width: 50%;    
+    &Title {
+        @extend %text-throw;
+        margin-bottom: 25px;
+        color: $text-color;
+        font-size: 20px;
+        font-family: $sans;
+    }    
+    &Button {
+        @extend %button-style;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;        
+    }
+       
+    
+}
+.inventoryContainer {
+    @extend %list-throw;
+    min-height: 200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    &Item {
+       background-color: $white-color;
+       border-radius: 5px;
+       padding: 10px;
+       height: 75px;       
+    & p {
+        margin-top: 0;
+        margin-bottom: 5px;
+        color: $text-color;
+        font-size: 14px;
+    }
+    }
+}
+.svg {
+    width: 15px;
+    height: 15px;
+    fill: $white-color;
+}
