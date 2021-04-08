@@ -1,17 +1,15 @@
 import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
-
+import patient from './AddPatient/AddPatientReducer';
 const middleware = [
   ...getDefaultMiddleware(),
 ];
 
-const mainReducer = combineReducers({
-  database: {
-
-  },  
+const mainReducer = combineReducers({  
+    patient,  
 });
 
 const store = configureStore({ reducer: mainReducer, middleware, devTools: process.env.NODE_ENV === 'development' });
 
 
-const exported = store
-export default exported;
+
+export default store;
