@@ -4,6 +4,9 @@ import sprite from '../../Sprite/symbol-defs.svg';
 import { v4 as uuidv4 } from 'uuid';
 import createPatient from '../../redux/AddPatient/AddPatientOperations';
 import { useDispatch } from 'react-redux';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 export default function AddPatient() {
   const [patient, setPatient] = useState(null);
@@ -37,7 +40,39 @@ export default function AddPatient() {
   useEffect(() => {   
       if (patient) {
         dispatch(createPatient(patient));
-      }              
+        const notify = () =>
+        toast.success(
+          '🦄 Паціент успішно доданий ',
+          {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          },
+        );
+      notify();
+      setTimeout(() => {
+        document.getElementById('redirectFromAdd').click();
+      }, 2000)
+      } else {
+        const notify = () =>
+        toast.error(
+          '🦄 Щось пішло не так, спробуйте знову ',
+          {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          },
+        );
+      notify();
+      }             
   }, [patient, dispatch])
   const inputHandler = evt => {
     switch (evt.target.name) {
@@ -105,6 +140,7 @@ export default function AddPatient() {
   };
   return (
     <section className={styles.addPatient}>
+      <ToastContainer />
       <h2 className={styles.addPatientTitle}>
         Форма заповнення даних пацієнта
       </h2>
@@ -271,6 +307,7 @@ export default function AddPatient() {
           );
         })}
       </ul>
+      <Link to='/' id='redirectFromAdd'></Link>
     </section>
   );
 }
