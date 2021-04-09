@@ -7,11 +7,13 @@ import { useDispatch } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export default function AddPatient() {
   const [patient, setPatient] = useState(null);
   const [name, setName] = useState('');
-  const [date, setDate] = useState('');
+  const [createDate, setCreateDate] = useState('');
+  const [recheckDate, setRecheckDate] = useState('');
   const [gender, setGender] = useState('');
   const [birthday, setBirthday] = useState('');
   const [disease, setDisease] = useState('');
@@ -20,13 +22,14 @@ export default function AddPatient() {
   const [diagnos, setDiagnos] = useState('');
   const [inventoryName, setInventoryName] = useState('');
   const [inventoryStartDate, setInventoryStartDate] = useState('');
-  const [inventoryDate, setInventoryDate] = useState('');
+  const [inventoryCheckDate, setInventoryCheckDate] = useState('');
   const [inventoryCount, setInventoryCount] = useState('');
   const submitHandler = evt => {
     evt.preventDefault();
     const newPatient = {
       name,
-      date,
+      createDate,
+      recheckDate,
       gender,
       birthday,
       disease,
@@ -57,30 +60,18 @@ export default function AddPatient() {
       setTimeout(() => {
         document.getElementById('redirectFromAdd').click();
       }, 2000)
-      } else {
-        const notify = () =>
-        toast.error(
-          '🦄 Щось пішло не так, спробуйте знову ',
-          {
-            position: 'top-right',
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          },
-        );
-      notify();
-      }             
+      }            
   }, [patient, dispatch])
   const inputHandler = evt => {
     switch (evt.target.name) {
       case 'name':
         setName(evt.target.value);
         break;
-      case 'date':
-        setDate(evt.target.value);
+      case 'createDate':
+        setCreateDate(evt.target.value);
+        break;
+        case 'recheckDate':
+        setRecheckDate(evt.target.value);
         break;
       case 'gender':
         setGender(evt.target.value);
@@ -110,7 +101,7 @@ export default function AddPatient() {
         id: uuidv4(),
         name: inventoryName,
         startDate: inventoryStartDate,
-        date: inventoryDate,
+        checkDate: inventoryCheckDate,
         count: inventoryCount,
       },
     ];
@@ -124,8 +115,8 @@ export default function AddPatient() {
         case 'inventoryStartDate':
         setInventoryStartDate(evt.target.value);
         break;
-      case 'inventoryDate':
-        setInventoryDate(evt.target.value);
+      case 'inventoryCheckDate':
+        setInventoryCheckDate(evt.target.value);
         break;
       case 'inventoryCount':
         setInventoryCount(evt.target.value);
@@ -139,6 +130,11 @@ export default function AddPatient() {
     setInventory(inventory.filter(({ id }) => id !== itemId));
   };
   return (
+    <CSSTransition in={true}
+    appear={true}
+    timeout={500}
+    classNames={styles}
+    unmountOnExit>
     <section className={styles.addPatient}>
       <ToastContainer />
       <h2 className={styles.addPatientTitle}>
@@ -161,12 +157,23 @@ export default function AddPatient() {
             />
           </label>
           <label className={styles.addPatientLabel}>
+            <span>Переогляд ІПР</span>
+            <input
+              className={styles.dateInput}
+              type="date"
+              name="recheckDate"
+              value={recheckDate}
+              onChange={inputHandler}
+              required
+            />
+          </label>
+          <label className={styles.addPatientLabel}>
             <span>Дата заповнення</span>
             <input
               className={styles.dateInput}
               type="date"
-              name="date"
-              value={date}
+              name="createDate"
+              value={createDate}
               onChange={inputHandler}
               required
             />
@@ -185,8 +192,8 @@ export default function AddPatient() {
           <label className={styles.addPatientLabel}>
             <span>Дата народження</span>
             <input
-              className={styles.addPatientInput}
-              type="text"
+              className={styles.dateInput}
+              type="date"
               name="birthday"
               value={birthday}
               onChange={inputHandler}
@@ -264,8 +271,8 @@ export default function AddPatient() {
             <input
               className={styles.dateInput}
               type="date"
-              name="inventoryDate"
-              value={inventoryDate}
+              name="inventoryCheckDate"
+              value={inventoryCheckDate}
               onChange={inventoryHandler}
               required
             />
@@ -288,11 +295,16 @@ export default function AddPatient() {
           </button>
         </form>
       </div>
-      <ul className={styles.inventoryContainer}>
+      <TransitionGroup component='ul' className={styles.inventoryContainer}>
         {inventory.map(item => {
           const { id, name, startDate, date, count } = item;
           return (
-            <li key={id} className={styles.inventoryContainerItem}>              
+            <CSSTransition key={id} in={true}
+    appear={true}
+    timeout={500}    
+    classNames={styles}    
+    unmountOnExit>
+            <li className={styles.inventoryContainerItem}>              
               <p>Назва: {name}</p>
               <p>Дата видачі: {startDate}</p>
               <p>Дата: {date}</p>
@@ -304,10 +316,12 @@ export default function AddPatient() {
                 Видалити
               </button>
             </li>
+            </CSSTransition>
           );
         })}
-      </ul>
+      </TransitionGroup>
       <Link to='/' id='redirectFromAdd'></Link>
     </section>
+    </CSSTransition>
   );
 }
