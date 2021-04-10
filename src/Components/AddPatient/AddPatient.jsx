@@ -297,7 +297,7 @@ export default function AddPatient() {
       </div>
       <TransitionGroup component='ul' className={styles.inventoryContainer}>
         {inventory.map(item => {
-          const { id, name, startDate, date, count } = item;
+          const { id, name, startDate, checkDate, count } = item;
           return (
             <CSSTransition key={id} in={true}
     appear={true}
@@ -307,7 +307,7 @@ export default function AddPatient() {
             <li className={styles.inventoryContainerItem}>              
               <p>Назва: {name}</p>
               <p>Дата видачі: {startDate}</p>
-              <p>Дата: {date}</p>
+              <p>Дата заміни: {checkDate}</p>
               <p>Кількість: {count}</p>
               <button
                 className={styles.inventoryContainerButton}

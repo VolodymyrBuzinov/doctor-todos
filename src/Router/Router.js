@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import pathes from './pathes';
 import AddPatient from '../Components/AddPatient/AddPatient';
+import PatientDetails from '../Components/PatientDetails/PatientDetails';
 export default function Router() {
   return (
     <>
@@ -16,9 +17,7 @@ export default function Router() {
           <Route path={pathes.addPatient}>
             <AddPatient/>
           </Route>
-          <Route path={pathes.patientDetails}>
-            <p>details</p>
-          </Route>
+          <Route path={pathes.patientDetails} component={PatientDetails} />           
           <Redirect to="/" />
         </Switch>
       </Suspense>

@@ -1,0 +1,221 @@
+@import '../../Helpers/utils.scss';
+
+.patientDetails {
+  position: relative;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  text-align: center;     
+  background-color: $section-color;  
+  height: 100%;
+  &SpinnerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;        
+}
+  &Form {        
+         width: 50%;
+  }
+  &Title {
+      @extend %text-throw;
+      margin-bottom: 25px;
+      color: $text-color;
+      font-size: 20px;
+      font-family: $sans;
+  }
+  &Label {
+      display: flex;        
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      width: 75%;
+      margin-bottom: 25px;
+      & span {
+      color: $text-color;
+      font-size: 15px;
+      }
+  }
+  &Input {        
+      width: 200px;
+      padding-left: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border: 2px solid $bg-color;
+      outline: none;
+      transition: border $animation-timing;
+      color: $text-color;
+      font-size: 15px;
+      border-radius: 10px;
+      &:focus {
+          border: 2px solid $hover-color;
+      }
+  }
+  &Button {
+      @extend %button-style;       
+  }
+}
+
+.dateInput {
+  width: 200px;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border: 2px solid $bg-color;
+  outline: none;
+  transition: border $animation-timing;
+  color: $text-color;
+  font-size: 15px;
+  border-radius: 10px;
+  &:focus {
+      border: 2px solid $hover-color;
+  }
+}
+.formContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 20px;   
+}
+.inventoryForm {
+  width: 50%;    
+  &Title {
+      @extend %text-throw;
+      margin-bottom: 25px;
+      color: $text-color;
+      font-size: 20px;
+      font-family: $sans;
+  }    
+  &Button {
+      @extend %button-style;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+           
+  }
+     
+  
+}
+.inventoryContainer {
+  @extend %list-throw;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  &Item {        
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+     background-color: $white-color;
+     border-radius: 5px;
+     padding: 10px;
+     border-radius: 15px;   
+         
+  & p {
+      margin-top: 0;
+      margin-bottom: 5px;
+      color: $text-color;
+      font-size: 14px;
+  }
+  }
+  &Button {
+      @extend %button-style;
+      background-color: $delete-controller;
+  }
+}
+.svg {
+  width: 15px;
+  height: 15px;
+  fill: $white-color;
+}
+
+.appear {    
+  opacity: 0.1;
+}
+.appearActive {    
+  opacity: 1;
+  transition: all 500ms ease-in;
+}
+.enter {
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.enterActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 500ms ease-in;
+}
+
+.exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.exitActive {
+  transform: translateY(-100%);
+  opacity: 0.1;
+  transition: all 500ms ease-in;
+}
+
+.loader {
+    animation:spin 1s infinite linear;
+    border:solid 2vmin transparent;
+    border-radius:50%;
+    border-right-color:#09f;
+    border-top-color:#09f;
+    box-sizing:border-box;
+    height:20vmin;
+    left:calc(60% - 10vmin);
+    position:fixed;
+    top:calc(50% - 10vmin);
+    width:20vmin;
+    z-index:1;
+    &:before {
+      animation:spin 2s infinite linear;
+      border:solid 2vmin transparent;
+      border-radius:50%;
+      border-right-color:#3cf;
+      border-top-color:#3cf;
+      box-sizing:border-box;
+      content:"";
+      height:16vmin;
+      left:0;
+      position:absolute;
+      top:0;
+      width:16vmin;
+    }
+    &:after {
+      animation:spin 3s infinite linear;
+      border:solid 2vmin transparent;
+      border-radius:50%;
+      border-right-color:#6ff;
+      border-top-color:#6ff;
+      box-sizing:border-box;
+      content:"";
+      height:12vmin;
+      left:2vmin;
+      position:absolute;
+      top:2vmin;
+      width:12vmin;
+    }
+  }
+  
+  @keyframes spin {
+    100% {
+      transform:rotate(360deg);
+    }
+  }
+
+  .fieldset {
+    border: none;
+  }
