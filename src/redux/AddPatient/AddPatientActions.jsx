@@ -1,13 +1,13 @@
 import { createAction } from "@reduxjs/toolkit";
 
-const actionCreateUserRequest = createAction('AddPatient/CreateRequest');
-const actionCreateUserSuccess = createAction('AddPatient/CreateSuccess');
-const actionCreateUserError = createAction('AddPatient/CreateError');
+const actionCreatePatientRequest = createAction('AddPatient/CreateRequest');
+const actionCreatePatientSuccess = createAction('AddPatient/CreateSuccess');
+const actionCreatePatientError = createAction('AddPatient/CreateError');
 
 const exp = {
-    actionCreateUserRequest,
-    actionCreateUserSuccess,
-    actionCreateUserError
+    actionCreatePatientRequest,
+    actionCreatePatientSuccess,
+    actionCreatePatientError
 }
 
 export default exp;

@@ -7,7 +7,7 @@ import styles from './PatientDetails.module.scss';
 import sprite from '../../Sprite/symbol-defs.svg';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from "react-redux";
-
+import updatePatient from '../../redux/UpdatePatient/UpdatePatientOperations';
 
 
 export default function PatientDetails() {      
@@ -54,7 +54,7 @@ export default function PatientDetails() {
 
     useEffect(() => {   
         if (editedPatient) {
-          dispatch();
+          dispatch(updatePatient(editedPatient, patient.id));
           const notify = () =>
           toast.success(
             '🦄 Паціент успішно оновлений ',
@@ -73,7 +73,7 @@ export default function PatientDetails() {
           document.getElementById('redirectFromAdd').click();
         }, 2000)
         }            
-    }, [patient, dispatch])
+    }, [patient,editedPatient, dispatch])
 
     const submitHandler = evt => {
         evt.preventDefault();
