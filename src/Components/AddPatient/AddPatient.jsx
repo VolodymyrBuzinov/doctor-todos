@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
+
 export default function AddPatient() {
   const [patient, setPatient] = useState(null);
   const [name, setName] = useState('');

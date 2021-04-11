@@ -26,6 +26,7 @@
       color: $text-color;
       font-size: 20px;
       font-family: $sans;
+      pointer-events: none;
   }
   &Label {
       display: flex;        
@@ -219,3 +220,4 @@
   .fieldset {
     border: none;
   }
+  

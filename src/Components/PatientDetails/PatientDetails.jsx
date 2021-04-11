@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState} from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styles from './PatientDetails.module.scss';
 import sprite from '../../Sprite/symbol-defs.svg';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from "react-redux";
 import updatePatient from '../../redux/UpdatePatient/UpdatePatientOperations';
-
+import Controllers from '../Controllers/Controllers';
+import Swal from 'sweetalert2';
 
 export default function PatientDetails() {      
     const [patient, setPatient] = useState(null);
@@ -54,21 +54,7 @@ export default function PatientDetails() {
 
     useEffect(() => {   
         if (editedPatient) {
-          dispatch(updatePatient(editedPatient, patient.id));
-          const notify = () =>
-          toast.success(
-            '🦄 Паціент успішно оновлений ',
-            {
-              position: 'top-right',
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            },
-          );
-        notify();
+          dispatch(updatePatient(editedPatient, patient.id));         
         setTimeout(() => {
           document.getElementById('redirectFromAdd').click();
         }, 2000)
@@ -77,18 +63,31 @@ export default function PatientDetails() {
 
     const submitHandler = evt => {
         evt.preventDefault();
-        const newPatient = {
-            name,
-            createDate,
-            recheckDate,
-            gender,
-            birthday,
-            disease,
-            group,
-            diagnos,
-            inventory,
-          };
-          setEditedPatient(newPatient); 
+        Swal.fire({
+          title: 'Ви точно хочете оновити дані пацієнта?',
+          showDenyButton: true,                        
+          confirmButtonText: `Так`,
+          denyButtonText: `Відмінити`,                        
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            const newPatient = {
+              name,
+              createDate,
+              recheckDate,
+              gender,
+              birthday,
+              disease,
+              group,
+              diagnos,
+              inventory,
+            };
+            setEditedPatient(newPatient);
+            Swal.fire('Успіх! Пацієнта оновлено успішно!', '', 'success')
+          } else if (result.isDenied) {
+            Swal.fire('Оновлення відмінено!', '', 'info')
+          }
+        })         
     }
 
     const inputHandler = evt => {
@@ -174,8 +173,9 @@ export default function PatientDetails() {
     timeout={500}
     classNames={styles}
     unmountOnExit>
-    <section className={styles.patientDetails}>
-      <ToastContainer />
+    <section className={styles.patientDetails}>      
+        <Controllers id={patientId}/>      
+      
       <h2 className={styles.patientDetailsTitle}>
         Форма оновлення даних пацієнта
       </h2>
@@ -283,7 +283,7 @@ export default function PatientDetails() {
           className={styles.inventoryForm}
           onSubmit={submitInventoryHandler}
         >
-            <fieldset className={styles.fieldset} id='fieldset' disabled>
+            <fieldset className={styles.fieldset} id='inventory' disabled>
           <h2 className={styles.inventoryFormTitle}>
             Додати інвентар
           </h2>
